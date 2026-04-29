@@ -88,7 +88,7 @@ The robot uses a simple physical structure designed for quick assembly and testi
 Clone the repository:
 
 ```bash
-git clone https://github.com/abacaxin/RobotLARP.git
+git clone https://github.com/abacaxin/RobotLARP
 ```
 
 Open it in Arduino IDE or PlatformIO, install the required libraries, and upload the code to the ESP32.
