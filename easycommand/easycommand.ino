@@ -44,14 +44,32 @@ void loop() {
   if(!PS4.isConnected()){}
   else{
     if(PS4.R1() || PS4.R2()){
-      digitalWrite(IN1, LOW);
-      digitalWrite(IN2, LOW);
-      digitalWrite(IN3, LOW);
-      digitalWrite(IN4, LOW);
-      servo.write(90);
-      delay(300);
-      servo.write(0);
-      delay(300);
+      lastMove = millis();
+      while(millis() - lastMove < interval){
+        servo.write(90);
+        R1 = (PS4.RStickY() > 0) ? HIGH : LOW;
+        L1 = (PS4.LStickY() > 0) ? HIGH : LOW;
+        R2 = PS4.RStickY() != 0 ? !R1 : R1;
+        L2 = PS4.LStickY() != 0  ? !L1 : L1;
+
+        digitalWrite(IN1, L1);
+        digitalWrite(IN2, L2);
+        digitalWrite(IN3, R1);
+        digitalWrite(IN4, R2);
+      }
+      lastMove = millis();
+      while(millis() - lastMove < interval){
+        servo.write(5);
+        R1 = (PS4.RStickY() > 0) ? HIGH : LOW;
+        L1 = (PS4.LStickY() > 0) ? HIGH : LOW;
+        R2 = PS4.RStickY() != 0 ? !R1 : R1;
+        L2 = PS4.LStickY() != 0  ? !L1 : L1;
+
+        digitalWrite(IN1, L1);
+        digitalWrite(IN2, L2);
+        digitalWrite(IN3, R1);
+        digitalWrite(IN4, R2);
+      }
     }
     R1 = (PS4.RStickY() > 0) ? HIGH : LOW;
     L1 = (PS4.LStickY() > 0) ? HIGH : LOW;
