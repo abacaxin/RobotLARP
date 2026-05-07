@@ -21,7 +21,7 @@ int pinServo = 22;
 
 Servo servo;
 void setup() {
-  PS4.begin("ec:e3:34:48:7b:1c");
+  PS4.begin("ec:e3:34:48:7b:1c"); //put your esp mac adress here  
   servo.setPeriodHertz(50);  // standard servo frequency
   servo.attach(pinServo, 500, 2400);  // min/max pulse width (µs)
   pinMode(IN1, OUTPUT);
@@ -121,7 +121,7 @@ void shoot(int target){
   if (pos < target) {
     for (; pos <= target; pos++) {
       servo.write(pos);
-      
+  
       R1 = (PS4.RStickY() > 0) ? HIGH : LOW;
       L1 = (PS4.LStickY() > 0) ? HIGH : LOW;
       R2 = PS4.RStickY() != 0 ? !R1 : R1;
