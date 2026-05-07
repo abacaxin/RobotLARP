@@ -1,6 +1,6 @@
 # RobotLARP
 
-![Demo](docs/demo.gif)
+![Demo](docs/Batman.jpeg)
 
 RobotLARP is a real-time controlled robot built using an ESP32 and a Bluetooth controller.  
 The project focuses on responsive motor control using simple, accessible hardware, with an emphasis on practical testing and iteration.
